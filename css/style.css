@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 /*common button 버튼 공통*/
 .button{
   font-size: 16px;
@@ -32,8 +31,11 @@
   z-index: 800;
   border-radius: 100%;
   box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+  opacity: 0;
+  transition: 1s;
 }
 
+.on{ opacity: 1;}
 
 .back_to_top a{
   width: 100%;
@@ -314,7 +316,7 @@ section .row > h2:after{
 
 .progressbar .items .title{
   float: left;
-  font-size: 700;
+  font-weight: 700;
   padding: 6px 0;
 }
 
@@ -339,6 +341,19 @@ section .row > h2:after{
   background: #abeb17;
 }
 
+section .row{
+  opacity: 0;
+  transform: translateY(1000px);
+  transition: 1s;
+}
+
+
+/*active interaction*/
+section.active .row{
+  opacity: 1;
+  transform: translateY(0px);
+}
+
 /*animation*/
 section.active .row .column .inner.progressbar .items_wrap:nth-of-type(1) .items{
  width: 50%;
@@ -358,6 +373,13 @@ section.active .row .column .inner.progressbar .items_wrap:nth-of-type(3) .items
 section.active .row .column .inner.progressbar .items_wrap:nth-of-type(4) .items{
  width: 60%;
  transition: 1s .75s;
+}
+
+/*myprofile*/
+section#myprofile.active .row .column .inner img{
+  transform: scale(1.2);
+  opacity: 0.3;
+  transition: 2s;
 }
 
 
@@ -485,10 +507,6 @@ section .row .column .inner img{
 }
 
 /*반응형 css*/
-
-/* 미디어쿼리
- */
-
 @media screen and ( max-width: 1200px ) {
   section .row .column{
     flex: 50%;
@@ -515,10 +533,11 @@ section .row .column .inner img{
     flex: 100%;
   }
   /*mobile gnb*/
+
   #mobile_close_btn{
     display: block;
   }
-  
+
   input[type=checkbox]#gnbcheck:checked ~ #header #gnb{
     left: 0;
   }
@@ -547,18 +566,16 @@ section .row .column .inner img{
     padding-left: 10px;
   }
 
-
   #header{
     position: absolute;
   }
-
-  @media screen and ( max-width: 380px){
-   section#ourclients .row .column{
-     flex: 100%;
-   }
-   section#mytool .row .column{
-   flex: 100%;
-  }
-
 }
+
+@media screen and ( max-width: 380px ) {
+  section#ourclients .row .column{
+    flex: 100%;
+  }
+  section#mytool .row .column{
+    flex: 100%;
+  }
 }
